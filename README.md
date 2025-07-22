@@ -62,6 +62,8 @@ ping HOSTNAME.colostate.edu  # Replace HOSTNAME with the machine's hostname
 
 ### 5. Add a Client
 
+NOTE: The computer running MeshCentral and the remote running AMT must be on same subnet in order to see eachother.
+
 - Go to https://localhost:4444/ and login (if not done already)
 - Click "click here to create a device group", then enter:
   Name: main (doesn't matter)
@@ -79,6 +81,8 @@ ping HOSTNAME.colostate.edu  # Replace HOSTNAME with the machine's hostname
 Repeat these steps for each machine of interest.
 
 ### 6. Send Power Command
+
+NOTE: The computer running MeshCentral and the remote running AMT must be on same subnet in order to see eachother.
 
 - Go to https://localhost:4444/ and login
 - Click on the entry for the machine of interest
