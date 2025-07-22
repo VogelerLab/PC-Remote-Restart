@@ -39,7 +39,7 @@ podman machine start
 podman create --name meshcentral --interactive --tty --publish 8888:80 --publish 4444:443 --publish 4433:4433 --restart unless-stopped ghcr.io/vogelerlab/remote-restart:latest
 ```
 
-Port 8888 (on host running the container) will be available for HTTP connection to MeshCentral, port 4433 for HTTPS connection, and port 4433 will be used by MeshCentral to send AMT (power control) commands to other PCs.
+Port 8888 (on host running the container) will be available for HTTP connection to MeshCentral, port 4444 for HTTPS connection, and port 4433 will be used by MeshCentral to send AMT (power control) commands to other PCs.
 
 Run container:
 
