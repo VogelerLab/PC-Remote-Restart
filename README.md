@@ -4,7 +4,7 @@ This repo houses references and a guide for how to remotely restart workstations
 
 ## GUIDE
 
-### 1. Setup AMT
+### 1. Setup AMT on clients (machines you want to remotely control)
 
 This section of the guide will focus on how to enable AMT on relatively recent releases of enterprise HP workstations.
 
@@ -24,7 +24,11 @@ This section of the guide will focus on how to enable AMT on relatively recent r
 - "Network Access State" should be "Active"
 - Exit and save changes
 
-### 2. Install MeshCentral (on Windows 11)
+---
+
+### 2. Setup and Use MeshCentral Server Host (machine you will use to control the clients)
+
+#### 2.1 Install MeshCentral on Windows 11 host
 
 [MeshCentral](https://github.com/Ylianst/MeshCentral) is software that allows for remote control of compatible and correctly configured hardware. It can be run in a Docker (Podman) container, which is the route this guide will take.
 
@@ -49,20 +53,23 @@ podman start meshcentral
 
 NOTE: If you run into issues installing/using MeshCentral via containers, you can install MeshCentral directly on the Windows host using the installer found on the MeshCentral website. In that case, simply replace 'https://localhost:4444/' with 'https://localhost:443/' for the remainder of this guide.
 
-### 3. List Client IP Addresses
+#### 2.2 List Client IP Addresses
 
-Ping the DNS name of the client's (Windows PCs you want to perform out-of-band management on) to get their IP addresses:
+Ping the DNS name of the clients (Windows PCs you want to perform out-of-band management on) to get their IP addresses:
 
 ```powershell
-ping HOSTNAME.colostate.edu  # Replace HOSTNAME with the machine's hostname
+'HOSTNAME1','HOSTNAME2','HOSTNAME3' | ForEach-Object { Resolve-DnsName -Name "$_" -ErrorAction SilentlyContinue }
+# Replace HOSTNAME1, etc... with the machines' hostnames
 ```
 
-### 4. Configure MeshCentral
+NOTE: In order for MeshCentral to control the client, it must be on the same subnet as the MeshCentral server. Given IP address of format `AAA.BBB.CCC.DDD`, two machines are on the same subnet if the `AAA.BBB.CCC.` part of their IP addresses match.
+
+#### 2.3 Configure MeshCentral
 
 - Go to https://localhost:4444/
 - Click "Create account" and then create one
 
-### 5. Add a Client
+#### 2.4 Add a Client
 
 NOTE: The computer running MeshCentral and the remote running AMT must be on same subnet in order to see eachother.
 
@@ -82,7 +89,7 @@ NOTE: The computer running MeshCentral and the remote running AMT must be on sam
 
 Repeat these steps for each machine of interest.
 
-### 6. Send Power Command
+#### 2.5 Send Power Command
 
 NOTE: The computer running MeshCentral and the remote running AMT must be on same subnet in order to see eachother.
 
