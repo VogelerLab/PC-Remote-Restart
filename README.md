@@ -24,7 +24,7 @@ This section of the guide will focus on how to enable AMT on relatively recent r
 - "Network Access State" should be "Active"
 - Exit and save changes
 
-### 2. Install MeshCentral
+### 2. Install MeshCentral (on Windows 11)
 
 [MeshCentral](https://github.com/Ylianst/MeshCentral) is software that allows for remote control of compatible and correctly configured hardware. It can be run in a Docker (Podman) container, which is the route this guide will take.
 
@@ -35,7 +35,6 @@ Create container:
 winget install podman
 # **REBOOT MACHINE**
 podman machine init
-podman machine set --rootful
 podman machine start
 podman create --name meshcentral --interactive --tty --publish 8888:80 --publish 4444:443 --publish 4433:4433 --restart unless-stopped ghcr.io/vogelerlab/remote-restart:latest
 ```
