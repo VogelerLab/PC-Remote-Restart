@@ -35,6 +35,7 @@ Create container:
 winget install podman
 # **REBOOT MACHINE**
 podman machine init
+podman machine set --rootful
 podman machine start
 podman create --name meshcentral --interactive --tty --publish 8888:80 --publish 4444:443 --publish 4433:4433 --restart unless-stopped ghcr.io/vogelerlab/remote-restart:latest
 ```
