@@ -47,6 +47,8 @@ Run container:
 podman start meshcentral
 ```
 
+NOTE: If you run into issues installing/using MeshCentral via containers, you can install MeshCentral directly on the Windows host using the installer found on the MeshCentral website. In that case, simply replace 'https://localhost:4444/' with 'https://localhost:443/' for the remainder of this guide.
+
 ### 3. List Client IP Addresses
 
 Ping the DNS name of the client's (Windows PCs you want to perform out-of-band management on) to get their IP addresses:
@@ -66,8 +68,8 @@ NOTE: The computer running MeshCentral and the remote running AMT must be on sam
 
 - Go to https://localhost:4444/ and login (if not done already)
 - Click "click here to create a device group", then enter:
-  Name: main (doesn't matter)
-  Type: Intel AMT only, no agent
+  - Name: main (doesn't matter)
+  - Type: Intel AMT only, no agent
   - Click "OK"
 - Click "Scan Network" and enter the IP address of the Windows computer you want to control into the "IP Range" box, then click "Scan"
 - Click "Select All"
